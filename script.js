@@ -2,7 +2,6 @@
 
 var promises = [
   d3.csv("./data/Sea_Turtle_Florida_Time.csv",parseCSV), 
-  d3.csv("./data/seaturtle_condition.csv"), 
   d3.json("./geojson/Florida_geomap.json")
 ];
 
@@ -10,16 +9,17 @@ var promises = [
 
 Promise.all(promises).then(function(data) {
 
-console.log(data);
+ 
 
 /*------Load Florida sea turtle data 1988 - 2014 Adapted from: https://myfwc.com/research/wildlife/sea-turtles/ ------*/
+
 var turtleData = data[0];
 
-var turtleCondition = data [1]
+ 
 
 /*------Load Florida: GEOjson file------*/
 
-var florida = data[2];
+var florida = data[1];
 
 
 
@@ -33,12 +33,13 @@ var svg = d3.select("#chart")
       .attr("height", height);
 
 /*------Create Lengends------*/
-
 var svg2 = d3.select("#legend")
+
 
     svg2.append("circle").attr("cx",20).attr("cy",20).attr("r", 5).style("fill", "#58546d")
     svg2.append("circle").attr("cx",20).attr("cy",40).attr("r", 5).style("fill", "#f4d53f")
     svg2.append("circle").attr("cx",20).attr("cy",60).attr("r", 5).style("fill", "#ec697d")
+      
   
     svg2.append("text").attr("x", 40).attr("y", 20).text("Green Turtles").style("font-size", "15px").attr("alignment-baseline","middle")
     svg2.append("text").attr("x", 40).attr("y", 40).text("Loggerhead").style("font-size", "15px").attr("alignment-baseline","middle")
@@ -92,9 +93,9 @@ var colorScale = d3.scaleOrdinal()
       .range([ "#58546d", "#f4d53f","#ec697d"]);
 
 
-/*------Draw the circles and html slider------*/
+/*------Draw the circles and html slider to update year data------*/
 
-function updateMap(year) {
+     function updateMap(year) {
 
 var filtered_data= turtleData.filter(function(d) {
            return d.year == year;
@@ -137,15 +138,18 @@ var greencircles = svg.selectAll("circle")
            .duration(0)
            .attr("r", 0)
            .remove();
+
       
     yearLabel.text(year);
 
-    /*------Create tooltips and hover effect------*/
+
+/*------Crete tooltips------*/
 
     var tooltip = d3.select("#chart")
     .append("div")
     .attr("class","tooltip");
 
+    
   svg.selectAll("circle")
   greencircles.on("mouseover", function(d) {
       var cx = +d3.select(this).attr("cx") + 15;
@@ -174,18 +178,22 @@ var greencircles = svg.selectAll("circle")
    }
 
  
-    // Initialize map
-    updateMap(selectedYear);
+   // Initialize map
+   updateMap(selectedYear);
 
    
-   /*------Upadte the data according the the year slider------*/
+   /*------Upadte the data according the the year------*/
 
-    slider.on("input", function() {
-        var year = this.value;
-        selectedYear = year;
+   slider.on("input", function() {
+       var year = this.value;
+       //console.log(year);
+
+       selectedYear = year;
        updateMap(selectedYear);
 
    })
+     
+});
 
 
 
@@ -200,12 +208,4 @@ var greencircles = svg.selectAll("circle")
  
   return d;
 
- }
-
-})
-
- /*-------------------------------code for assignment finishes here-------------------------------*/
-
-
-
-
+}
