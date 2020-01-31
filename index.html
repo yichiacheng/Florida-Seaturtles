@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="./style/style.css">
+        <script src="lib/d3.js"></script>
+    </head>
+    <body>
+        <div class="row">
+            <div class="header">Florida Sea Turtles: Where Can We Find Them? From 1988 to 2014 </div>
+            <div class="content">
+                <h4>BY YI-CHIA CHENG</h4>
+                <img src="./img/floridaseaturtles.png" width="90%">
+                <h2>Data Description</h2>
+    <p>The datasets are from <a href="https://myfwc.com/research/wildlife/sea-turtles/">
+        Florida Fish and Wildlife Conservation Commission</a> and <a href="http://geodata.myflorida.com/datasets/swfwmd::florida-counties">Official State of Florida Geographic Data Portal</a> which include the locations, time, conditions of major kinds of sea turtles around Florida from 1988 to 2014. 
+    <br>
+    <br>
+    The ocean around Florida is one of the most important habitat for the endangered and threatened sea turtles of the world. With global climate change, ocean pollution, does the number of sea turtles have significant change in the past two decades? The map will help us find out.</p>
+
+    <h2>Florida Sea Turtles: Changes from 1988 to 2014</h2>
+    <p>By sliding the bar to select the year and see the top three most common sea turtles around Florida-<bold>Green Turtles</bold>, <bold>Loggerhead</bold> and <bold>Kemp's Ridley</bold>. 
+    <br>
+    <br>
+    If we look at the year closely, it's not hard to find several interesting findings: first, there is no data at all at the east coast of Florida in 2007. Since it looks very unusual, I would assume it's caused by some kind of data loss rather than we didn't find any sea turtle in the east coast in the whole year of 2017.
+    <br>
+    <br>
+    Second, before 2010, loggerhead usually used to have the most population around Florida. However, green turtles replace loggerhead become the most common species to be captured or found. Kemp's Ridley, on the other hand, has consistently remained the third of the past twenty years.
+    </p>
+
+    <h3>Please select any year from 1988 to 2014 and see the sea turtle capture locations. Hover on dots to see what sea turtle you found in which county of Florida.</h2></div>
+     
+    
+    
+    <div id="slider">
+        <input id="selectYear" type="range" step=1>
+    <div><svg id="legend" height=90 width=400></svg></div>  
+    </div>
+   
+    <div id="chart"></div>
+    <!--
+
+    <div class="content">
+            <h2>Stacked Bar Chart Showing Seaturtles Conditions</h2>
+        <p>To further dig in the data, I decide to pick the biggest deparment categories: General and General Petite to compare their rating. In this scatteplots visualization, we have the age of reviewers corresponding to the rate they gave. It is not difficult to see that both General and General Petite sections have the most people and widest age range to give a full score to their purchase.
+        </p>
+   
+        <p>As for the most picky customers who gave only 1 point in General section, the circles seem to fall on the age group 30-60; while for General Petite section, the age group of picky customers are more from 30-50.</p>
+</div> -->
+
+
+
+<!--
+    stacked bar chart shows the conditions of the turtles captured or found
+<div class="buttons">
+            <button id="Alive">Alive</button>
+            <button id="FreshlyDead">Freshly Dead</button>
+        </div>
+<div id="chart2"></div> -->
+            
+        
+       
+    </div>
+   
+        <script src="./script.js">
+        
+        </script>
+
+        
+    </body>
+</html>
